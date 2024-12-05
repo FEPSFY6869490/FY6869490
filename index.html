@@ -69,7 +69,39 @@
      margin-left: 50px
   }
 </style>
-  
+
+  <style>
+.collapsible {
+  background-color: #EAF8FF;
+  cursor: pointer;
+
+  width: 3%;
+  border: none;
+  font-size: 15px;
+}
+
+.active, .collapsible:hover {
+  background-color: #C6E2F0;
+}
+
+.collapsible:after {
+  content: '\002B';
+
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  background-color: #EAF8FF;
+}
+</style>
     <body>
 
       <p clase="ex1">
@@ -117,10 +149,11 @@
       <hr>
       
       <h3 id="Abstract"; style="font-family: georgia">Abstract</h3>
-    
-      <p class="ex1">There is a driver to find cleaner sources to replace fossil fuels. Air-breathing electric propulsion systems (ABEP) operate on atmospheric particles, providing clean propulsion. That raises the question of whether ABEP is the next step in creating a sustainable future, replacing other propulsion systems. This article investigates the benefits ABEP provides, operational orbit, and looks at current research. It was found that ABEP outperforms other propulsion systems in very low earth orbit, providing lower launch costs and increasing life span. Still, its applications are limited as it relies on atmospheric gas as a propellant. Current testing, such as the AETHER project's successful model ignition and the DISCOVERER project's aerodynamic altitude control technology, shows advances in the technology but also suggests that more research needs to be done before ABEP is fully viable. Although ABEP can not replace conventional propulsion, it is a step in the right direction for the industry.</p>
       
-
+<button class="collapsible"></button>
+<div class="content">
+      <p class="ex1">There is a driver to find cleaner sources to replace fossil fuels. Air-breathing electric propulsion systems (ABEP) operate on atmospheric particles, providing clean propulsion. That raises the question of whether ABEP is the next step in creating a sustainable future, replacing other propulsion systems. This article investigates the benefits ABEP provides, operational orbit, and looks at current research. It was found that ABEP outperforms other propulsion systems in very low earth orbit, providing lower launch costs and increasing life span. Still, its applications are limited as it relies on atmospheric gas as a propellant. Current testing, such as the AETHER project's successful model ignition and the DISCOVERER project's aerodynamic altitude control technology, shows advances in the technology but also suggests that more research needs to be done before ABEP is fully viable. Although ABEP can not replace conventional propulsion, it is a step in the right direction for the industry.</p>
+</div>
       <hr>
       
     
@@ -271,6 +304,21 @@
   window.onload = displayTotalWordCount;
 </script>
 
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    } 
+  });
+}
+</script>
     </body>
     </html>
- 
